@@ -9,6 +9,7 @@ typedef struct {
     float area;
     float pib;
     int pontosTuristicos;
+    float densidadePopulacional;
 } Carta;
 
 int main(){
@@ -31,6 +32,7 @@ int main(){
     scanf("%f", &carta1.pib);
     printf("Digite os pontos turísticos: ");
     scanf("%d", &carta1.pontosTuristicos);
+    carta1.densidadePopulacional = (float)carta1.populacao / carta1.area;
 
     // Cadastro da Carta 2
     printf("\n--- Cadastro da Carta 2 ---\n");
@@ -48,6 +50,11 @@ int main(){
     scanf("%f", &carta2.pib);
     printf("Digite os pontos turísticos: ");
     scanf("%d", &carta2.pontosTuristicos);
+    carta2.densidadePopulacional = (float)carta2.populacao / carta2.area;
+
+    // Super poder das cartas
+    float superPoderCarta1 = carta1.populacao + carta1.area + carta1.pib + carta1.pontosTuristicos + carta1.densidadePopulacional;
+    float superPoderCarta2 = carta2.populacao + carta2.area + carta2.pib + carta2.pontosTuristicos + carta2.densidadePopulacional;
 
     // Exibição dos dados com todas as informações cadastradas
     printf("\n--- Dados da Carta 1 ---\n");
@@ -58,8 +65,9 @@ int main(){
     printf("Área: %.2f km²\n", carta1.area);
     printf("PIB: %.2f bilhões de reais\n", carta1.pib);
     printf("Pontos Turísticos: %d\n", carta1.pontosTuristicos);
-    printf("Densidade populacional: %.2f habitantes/km²\n", carta1.populacao / carta1.area);
+    printf("Densidade populacional: %.2f habitantes/km²\n", carta1.densidadePopulacional);
     printf ("Pib per capita: %.2f reais\n", (carta1.pib * 1000000000) / carta1.populacao);
+    printf("Super Poder: %.2f\n", superPoderCarta1);
     printf("--------------------------------------------------\n");
 
     printf("\n--- Dados da Carta 2 ---\n");
@@ -70,9 +78,67 @@ int main(){
     printf("Área: %.2f km²\n", carta2.area);
     printf("PIB: %.2f bilhões de reais\n", carta2.pib);
     printf("Pontos Turísticos: %d\n", carta2.pontosTuristicos);
-    printf("Densidade populacional: %.2f habitantes/km²\n", carta2.populacao / carta2.area);
+    printf("Densidade populacional: %.2f habitantes/km²\n", carta2.densidadePopulacional);
     printf ("Pib per capita: %.2f reais\n", (carta2.pib * 1000000000) / carta2.populacao);
+    printf("Super Poder: %.2f\n", superPoderCarta2);
     printf("--------------------------------------------------\n");
+
+    printf("\n--- Resultado da Batalha ---\n");
+
+    printf("-- População --\n");
+    if (carta1.populacao > carta2.populacao) {
+        printf("Carta 1 venceu!\n");
+    } else if (carta2.populacao > carta1.populacao) {
+        printf("Carta 2 venceu!\n");
+    } else {
+        printf("Empate!\n");
+    }
+
+    printf("-- Area --\n");
+    if (carta1.area > carta2.area) {
+        printf("Carta 1 venceu!\n");
+    } else if (carta2.area > carta1.area) {
+        printf("Carta 2 venceu!\n");
+    } else {
+        printf("Empate!\n");
+    }
+
+    printf("-- PIB --\n");
+    if (carta1.pib > carta2.pib) {
+        printf("Carta 1 venceu!\n");
+    } else if (carta2.pib > carta1.pib) {
+        printf("Carta 2 venceu!\n");
+    } else {
+        printf("Empate!\n");
+    }
+
+    printf("-- Pontos Turísticos --\n");
+    if (carta1.pontosTuristicos > carta2.pontosTuristicos) {
+        printf("Carta 1 venceu!\n");
+    } else if (carta2.pontosTuristicos > carta1.pontosTuristicos) {
+        printf("Carta 2 venceu!\n");
+    } else {
+        printf("Empate!\n");
+    }
+
+    printf("-- Densidade Populacional --\n");
+    // No Super Trunfo, o menor valor de densidade vence
+    if (carta1.densidadePopulacional < carta2.densidadePopulacional) {
+        printf("Carta 1 venceu!\n");
+    } else if (carta2.densidadePopulacional < carta1.densidadePopulacional) {
+        printf("Carta 2 venceu!\n");
+    } else {
+        printf("Empate!\n");
+    }
+
+    printf("-- Super Poder Total --\n");
+    if (superPoderCarta1 > superPoderCarta2) {
+        printf("Carta 1 venceu!\n");
+    } else if (superPoderCarta2 > superPoderCarta1) {
+        printf("Carta 2 venceu!\n");
+    } else {
+        printf("Empate!\n");
+    }
 
     return 0;
 }
