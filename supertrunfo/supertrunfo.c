@@ -15,7 +15,16 @@ typedef struct {
 int main(){
     // Criação de duas cartas como variaveis
     Carta carta1, carta2;
+    int opcao;
+    printf("Bem-vindo ao jogo Super Trunfo - Cidades Brasileiras!\n");
+    printf("1 - Iniciar jogo\n");
+    printf("2 - Sair\n");
+    printf("Escolha uma opção: ");
+    scanf("%d", &opcao);
 
+switch (opcao)
+{
+case 1:
     // Cadastro da Carta 1
     printf("--- Cadastro da Carta 1 ---\n");
     printf("Digite o estado (A-H): ");
@@ -140,5 +149,17 @@ int main(){
         printf("Empate!\n");
     }
 
+    break;
+
+case 2:
+    printf("Saindo do jogo. Até a próxima!\n");
+    break;
+
+default:
+    printf("Opção inválida!\n");
+    break;
+}
+
     return 0;
 }
+    
